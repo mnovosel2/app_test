@@ -16,6 +16,18 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+/**************Views******************/
+Route::get('/account/login', [ 'as' => 'loginRoute', 'uses' => 'AccountController@LoginForm' ]);
+Route::get('/account/register', [ 'as' => 'registerRoute', 'uses' => 'AccountController@RegisterForm' ]);
+/**************Views******************/
+
+/***************API******************/
+Route::post('/api/account/registration', ['as' => 'registerApiRoute', 'uses' => 'AccountApiController@Register']);
+Route::post('/api/account/login', ['as' => 'loginApiRoute', 'uses' => 'AccountApiController@Login']);
+
+/***************API******************/
+
+/*
 Route::get('login', function(){
    return View::make('users.login');
 });
@@ -32,10 +44,10 @@ Route::post('api/login', function(){
    }
 
 });
-
+*/
 Route::group(array('before' => 'auth.token'), function() {
-    Route::get('api/data', function() {
-        return "Protected data!";
+    Route::post('api/data', function() {
+        return Auth::user();
     });
 });
 
