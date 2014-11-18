@@ -4,15 +4,32 @@ class AccountApiController extends \BaseController {
 
 	public function Register(){
 
-        $newUser = new User();
+        $password = Input::get('password');
 
-        $newUser->fill(Input::except(['_token', 'password']));
+        $email = Input::get('email');
 
-        $newUser->password = Hash::make(Input::get('password'));
+        if(!empty($password) && !empty($email)) {
 
-        $newUser->save();
+            $newUser = new User();
 
-        return $newUser;
+            $newUser->fill(Input::except(['_token', 'password']));
+
+            $newUser->password = Hash::make(Input::get('password'));
+
+            try{
+
+                $newUser->save();
+
+            }catch (Exception $e){
+
+                return [ 'status' => false ];
+
+            }
+
+            return [ 'status' => true ];
+
+        }else
+            return [ 'status' => false ];
 
     }
 
@@ -23,7 +40,11 @@ class AccountApiController extends \BaseController {
             $authToken = AuthToken::create(Auth::user());
             $publicToken = AuthToken::publicToken($authToken);
 
-            return [ 'token' => $publicToken ];
+            return [ 'status' => true, 'token' => $publicToken ];
+        }else{
+
+            return [ 'status' => false ];
+
         }
 
     }

@@ -4,7 +4,7 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Additional Compiled Classes
+	| Additional Compiled classes
 	|--------------------------------------------------------------------------
 	|
 	| Here you may specify additional classes to include in the compiled file

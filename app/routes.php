@@ -24,7 +24,6 @@ Route::get('/account/register', [ 'as' => 'registerRoute', 'uses' => 'AccountCon
 /***************API******************/
 Route::post('/api/account/registration', ['as' => 'registerApiRoute', 'uses' => 'AccountApiController@Register']);
 Route::post('/api/account/login', ['as' => 'loginApiRoute', 'uses' => 'AccountApiController@Login']);
-
 /***************API******************/
 
 /*
