@@ -5,7 +5,7 @@
     </head>
     <body>
 
-        <form action="/api/login" method="POST">
+        <form action="/api/account/login" method="POST">
 
             <input type="text" name="email" placeholder="Email..." id="email"/>
 
