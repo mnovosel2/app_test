@@ -125,7 +125,7 @@ return array(
         'Barryvdh\Cors\CorsServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
-
+        'Zizaco\Entrust\EntrustServiceProvider'
 	),
 
 	/*
@@ -194,7 +194,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
         'AuthToken' => 'Tappleby\Support\Facades\AuthToken',
         'AuthTokenNotAuthorizedException' => 'Tappleby\AuthToken\Exceptions\NotAuthorizedException',
-
+        'Entrust'    => 'Zizaco\Entrust\EntrustFacade',
 	),
 
 );

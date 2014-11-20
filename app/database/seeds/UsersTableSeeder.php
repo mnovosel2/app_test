@@ -7,8 +7,26 @@ class UsersTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
+        /*
+         * Role instantiation
+         * */
+        $admin = new Role;
+        $admin->name = 'Admin';
+        $admin->save();
+        $manageApp = new Permission();
+        $manageApp->name = 'can_manage';
+        $manageApp->display_name = 'Can Manage App';
+        $manageApp->save();
+        $userRole = new Role;
+        $userRole->name = 'User';
+        $userRole->save();
+        $useApp = new Permission();
+        $useApp->name = 'can_use';
+        $useApp->display_name = 'Can Use App';
+        $useApp->save();
+        $userRole->attachPermission($useApp);
 
+		$faker = Faker::create();
 		foreach(range(1, 10) as $index)
 		{
 			User::create([
@@ -17,6 +35,11 @@ class UsersTableSeeder extends Seeder {
                 'created_at' => $faker->date()
 			]);
 		}
+        User::create([
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('xxx123'),
+            'created_at' => $faker->date()
+        ]);
 	}
 
 }
