@@ -10,7 +10,8 @@
 		"barryvdh/laravel-cors": "0.2.x",
         "dollar/generators": "dev-master",
         "fzaninotto/faker": "v1.3.0",
-        "xethron/migrations-generator": "dev-master"
+        "xethron/migrations-generator": "dev-master",
+        "zizaco/entrust": "1.2.*@dev"
 	},
 	"autoload": {
 		"classmap": [

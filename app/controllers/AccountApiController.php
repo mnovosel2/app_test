@@ -9,17 +9,16 @@ class AccountApiController extends \BaseController {
         $email = Input::get('email');
 
         if(!empty($password) && !empty($email)) {
-
             $newUser = new User();
 
             $newUser->fill(Input::except(['_token', 'password']));
 
             $newUser->password = Hash::make(Input::get('password'));
-
             try{
 
                 $newUser->save();
-
+                $userRole=Role::find(2);
+                $newUser->attachRole($userRole);
             }catch (Exception $e){
 
                 return [ 'status' => false ];
@@ -39,7 +38,6 @@ class AccountApiController extends \BaseController {
         {
             $authToken = AuthToken::create(Auth::user());
             $publicToken = AuthToken::publicToken($authToken);
-
             return [ 'status' => true, 'token' => $publicToken ];
         }else{
 
