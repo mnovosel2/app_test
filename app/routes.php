@@ -10,25 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('/', function()
-{
-    $user=Auth::user();
-    if($user){
-        if($user->hasRole('User')){
-            return 'Test';
-        }else{
-            return View::make('hello');
-        }
-    }else{
-        return View::make('hello');
-    }
-});
-Route::get('/logout',function(){
-    Auth::logout();
-    return Redirect::to('/');
-
-});
 /**************Views******************/
 Route::get('/account/login', [ 'as' => 'loginRoute', 'uses' => 'AccountController@LoginForm' ]);
 Route::get('/account/register', [ 'as' => 'registerRoute', 'uses' => 'AccountController@RegisterForm' ]);

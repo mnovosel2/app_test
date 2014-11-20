@@ -33,13 +33,14 @@ class UsersTableSeeder extends Seeder {
                 'email' => $faker->email(),
                 'password' => Hash::make('xxx123'),
                 'created_at' => $faker->date()
-			]);
+			])->attachRole($userRole);
 		}
         User::create([
             'email' => 'admin@gmail.com',
             'password' => Hash::make('xxx123'),
             'created_at' => $faker->date()
         ]);
-	}
+        User::where('email','=','admin@gmail.com')->first()->attachRole($admin);
+    }
 
 }
