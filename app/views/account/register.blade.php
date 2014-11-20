@@ -5,7 +5,9 @@
     </head>
     <body>
 
-        <form action="/api/account/login" method="POST">
+        <h2>Register form</h2>
+
+        <form action="/api/account/registration" method="POST" name="registration-data">
 
             <input type="text" name="email" placeholder="Email..." id="email"/>
 

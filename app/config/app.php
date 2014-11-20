@@ -123,7 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Tappleby\AuthToken\AuthTokenServiceProvider',
         'Barryvdh\Cors\CorsServiceProvider',
-        'Way\Generators\GeneratorsServiceProvider',
+        'Dollar\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
 
 	),
