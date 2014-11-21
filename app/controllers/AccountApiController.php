@@ -14,6 +14,9 @@ class AccountApiController extends \BaseController {
             $newUser->fill(Input::except(['_token', 'password']));
 
             $newUser->password = Hash::make(Input::get('password'));
+
+            FileUpload::saveImage('/uploads', 'avatar');
+
             try{
 
                 $newUser->save();
