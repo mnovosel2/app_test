@@ -13,6 +13,8 @@ class UsersController extends BaseController {
 	{
         $this->beforeFilter('auth');
 
+        $this->beforeFilter('admin');
+
 		$this->user = $user;
 	}
 
