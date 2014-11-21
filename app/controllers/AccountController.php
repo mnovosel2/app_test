@@ -2,15 +2,23 @@
 
 class AccountController extends \BaseController {
 
-	public function LoginForm(){
+	public function loginForm(){
 
-        return View::make('users.login');
+        return View::make('account.login');
 
     }
 
-    public function RegisterForm(){
+    public function registerForm(){
 
-        return View::make('users.register');
+        return View::make('account.register');
+
+    }
+
+    public function logout(){
+
+        Auth::logout();
+
+        return Redirect::route('loginRoute');
 
     }
 

@@ -14,36 +14,20 @@ Route::get('/',function(){
     return View::make('home.index');
 });
 /**************Views******************/
-Route::get('/account/login', [ 'as' => 'loginRoute', 'uses' => 'AccountController@LoginForm' ]);
-Route::get('/account/register', [ 'as' => 'registerRoute', 'uses' => 'AccountController@RegisterForm' ]);
+Route::get('/admin', ['as' => 'adminPanelRoute', 'uses' => 'PanelController@index']);
+Route::get('/account/logout', [ 'as' => 'logoutRoute', 'uses' => 'AccountController@logout' ]);
+Route::get('/account/login', [ 'as' => 'loginRoute', 'uses' => 'AccountController@loginForm' ]);
+Route::get('/account/register', [ 'as' => 'registerRoute', 'uses' => 'AccountController@registerForm' ]);
 /**************Views******************/
 
 /***************API******************/
-Route::post('/api/account/registration', ['as' => 'registerApiRoute', 'uses' => 'AccountApiController@Register']);
-Route::post('/api/account/login', ['as' => 'loginApiRoute', 'uses' => 'AccountApiController@Login']);
+Route::post('/api/account/registration', ['as' => 'registerApiRoute', 'uses' => 'AccountApiController@register']);
+Route::post('/api/account/login', ['as' => 'loginApiRoute', 'uses' => 'AccountApiController@login']);
 /***************API******************/
 
-/*
-Route::get('login', function(){
-   return View::make('users.login');
-});
-
-Route::post('api/login', function(){
-
-   if(Auth::attempt([ 'email' => Input::get('email'), 'password' => Input::get('password') ], true))
-   {
-       $authToken = AuthToken::create(Auth::user());
-       $publicToken = AuthToken::publicToken($authToken);
-
-
-       return $publicToken;
-   }
-
-});
-*/
 Route::group(array('before' => 'auth.token'), function() {
-    Route::post('api/data', function() {
-        return Auth::user();
+    Route::post('api/data', function(){
+        return Token::getUserInstance();
     });
 });
 
@@ -52,3 +36,7 @@ Route::group(array('before' => 'auth.token'), function() {
 Route::get('auth', 'Tappleby\AuthToken\AuthTokenController@index');
 Route::post('auth', 'Tappleby\AuthToken\AuthTokenController@store');
 Route::delete('auth', 'Tappleby\AuthToken\AuthTokenController@destroy');
+/***************************AuthToken*****************************/
+
+/**************************Resource******************************/
+Route::resource('users', 'UsersController');

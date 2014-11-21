@@ -51,7 +51,7 @@ return array(
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
-/*		'mysql' => array(
+		/*'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'rsc',
@@ -61,7 +61,7 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),*/
-		'mysql' => array(
+		 'mysql' => array(
 		 	'driver'    => 'mysql',
 		 	'host'      => '178.62.74.13:3306',
 		 	'database'  => 'rsc',
@@ -70,7 +70,7 @@ return array(
 		 	'charset'   => 'utf8',
 		 	'collation' => 'utf8_unicode_ci',
 		 	'prefix'    => '',
-		 ),
+         ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

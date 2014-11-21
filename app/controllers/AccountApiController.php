@@ -2,7 +2,7 @@
 
 class AccountApiController extends \BaseController {
 
-	public function Register(){
+	public function register(){
 
         $password = Input::get('password');
 
@@ -32,7 +32,7 @@ class AccountApiController extends \BaseController {
 
     }
 
-    public function Login(){
+    public function login(){
 
         if(Auth::attempt([ 'email' => Input::get('email'), 'password' => Input::get('password') ], true))
         {
