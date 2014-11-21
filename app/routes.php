@@ -13,6 +13,11 @@
 Route::get('/',function(){
     return View::make('home.index');
 });
+Route::get('/admin',[
+    'before'=>'admin',
+    function(){
+    return 'Admin here';
+}]);
 /**************Views******************/
 Route::get('/account/login', [ 'as' => 'loginRoute', 'uses' => 'AccountController@LoginForm' ]);
 Route::get('/account/register', [ 'as' => 'registerRoute', 'uses' => 'AccountController@RegisterForm' ]);
